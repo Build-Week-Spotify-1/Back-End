@@ -24,7 +24,7 @@ function findById(id) {
     .select("id", "username", "password");
 }
 
-function addUser(user) {
+function add(user) {
   return db("users")
     .insert(user)
     .then(ids => {

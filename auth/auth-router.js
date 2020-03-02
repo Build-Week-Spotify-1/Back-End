@@ -2,7 +2,7 @@ const router = require("express").Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-const Users = require("../users/users-router");
+const Users = require("../users/users-model");
 
 //endpoint: /api/auth/register
 router.post("/register", (req, res) => {
@@ -37,11 +37,13 @@ router.post("/login", (req, res) => {
       }
     })
     .catch(err => {
+      console.log(err);
       res.status(500).json({ message: "Unable to login", error: err });
     });
 });
 
 function generateToken(user) {
+  const jwtSecret = process.env.JWT_SECRET || "keep it secret";
   const payload = {
     subject: user.id,
     username: user.username
