@@ -4,8 +4,13 @@ const helmet = require("helmet");
 
 const server = express();
 
+//global middleware
 server.use(helmet());
 server.use(cors());
 server.use(express.json());
+
+server.get("/", (req, res) => {
+  res.json({ api: "is running" });
+});
 
 module.exports = server;
