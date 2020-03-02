@@ -17,7 +17,7 @@ server.use("/api/users", usersRouter); //has /api/users and /api/users/:id
 server.use("/api/auth", authRouter); //has /api/auth/login and /api/auth/register
 
 server.get("/", (req, res) => {
-  res.json({ api: "is running" });
+  res.send({ api: "is running" });
 });
 
 module.exports = server;
