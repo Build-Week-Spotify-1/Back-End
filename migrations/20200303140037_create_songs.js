@@ -1,5 +1,5 @@
 exports.up = function(knex) {
-  return knex.schema.createTable("favoriteSongs", favs => {
+  return knex.schema.createTable("favorites", favs => {
     favs.increments();
 
     favs
@@ -17,5 +17,5 @@ exports.up = function(knex) {
 };
 
 exports.down = function(knex) {
-  return knex.schema.dropTableIfExists("favoriteSongs");
+  return knex.schema.dropTableIfExists("favorites");
 };

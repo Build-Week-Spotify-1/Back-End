@@ -7,12 +7,12 @@ module.exports = {
 };
 
 function saveSong(song) {
-  return db("favoriteSongs")
+  return db("favorites")
     .insert(song)
     .then(ids => {
       const id = ids[0];
 
-      return db("favoriteSongs")
+      return db("favorites")
         .where({ id })
         .first()
         .then(song => {
@@ -22,13 +22,13 @@ function saveSong(song) {
 }
 
 function getSavedSongs(id) {
-  return db("favoriteSongs")
+  return db("favorites")
     .select()
     .where({ user_id: id });
 }
 
 function removeSong(user_id, id) {
-  return db("favoriteSongs")
+  return db("favorites")
     .select()
     .where({ user_id, id })
     .limit(1)

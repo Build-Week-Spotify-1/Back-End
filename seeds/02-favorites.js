@@ -1,5 +1,5 @@
 exports.seed = function(knex) {
-  return knex("favoriteSongs").insert([
+  return knex("favorites").insert([
     {
       id: 1,
       user_id: 1,
