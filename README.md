@@ -14,6 +14,7 @@ https://spotify-suggester.herokuapp.com/
 | POST | /api/auth/login    | Login          |
 | GET  | /api/users         | get all users  |
 | GET  | /api/users/:id     | get user by id |
+| PUT  | /api/users/:id     | update a user  |
 
 ### User Schema
 

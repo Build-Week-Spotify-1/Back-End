@@ -32,4 +32,26 @@ router.get("/:id", authenticate, (req, res) => {
     });
 });
 
+//endpoint: /api/users
+router.put("/:id", authenticate, (req, res) => {
+  console.log(req.params);
+  const { id } = req.params;
+  const changes = req.body;
+
+  Users.findById(id)
+    .then(user => {
+      if (user) {
+        Users.update(changes, id).then(changes => {
+          res.json(changes);
+        });
+      } else {
+        res.status(404).json({ message: "Could not update" });
+      }
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json({ message: "Failed to update", error: err });
+    });
+});
+
 module.exports = router;
