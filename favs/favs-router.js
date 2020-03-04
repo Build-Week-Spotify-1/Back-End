@@ -5,21 +5,21 @@ const Favs = require("./favs-model");
 const authenticate = require("../auth/auth-middleware");
 
 router.post("/faves", authenticate, (req, res) => {
-  const song = req.body; //need to make sure front end can send song (title, artist, name) as req.body
-  const tokenId = req.decodedToken.subject;
-  console.log(req.decodedToken.subject);
-  if (tokenId === song.user_id) {
-    Favs.saveSong(song)
-      .then(savedSong => {
-        res.status(200).json(savedSong);
-      })
-      .catch(err => {
-        console.log(err);
-        res.status(500).json({ message: "Unable to save" });
-      });
-  } else {
-    return res.status(401).json({ message: "Unauthorized" });
-  }
+  const song = req.body; //need to make sure front end can send song (title, artist, name) as req.body TO the specific user
+  //   const tokenId = req.decodedToken.subject;
+  //   console.log(req.decodedToken.subject);
+  //   if (tokenId === song.user_id) {
+  Favs.saveSong(song)
+    .then(savedSong => {
+      res.status(200).json(savedSong);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json({ message: "Unable to save" });
+    });
+  //   } else {
+  //     return res.status(401).json({ message: "Unauthorized" });
+  //   }
 });
 
 router.get("/:user_id/faves", (req, res) => {
