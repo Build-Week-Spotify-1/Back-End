@@ -10,15 +10,15 @@ function saveSong(song) {
   return db("favorites")
     .insert(song)
     .then(ids => {
-      const id = ids[0];
+      return ids;
 
-      return db("favorites")
-        .where({ id })
-        .first()
-        .then(song => {
-          console.log(song);
-          return song;
-        });
+      //   return db("favorites")
+      //     .where({ id })
+      //     .first()
+      //     .then(song => {
+      //       console.log(song);
+      //       return song;
+      //     });
     });
 }
 

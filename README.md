@@ -30,9 +30,9 @@ https://spotify-suggester.herokuapp.com/
 
 ### Favorites Schema
 
-| name    | type   | required |
-| ------- | ------ | -------- |
-| user_id | string | yes      |
-| title   | string | yes      |
-| artist  | string | yes      |
-| album   | string | no       |
+| name    | type    | required |
+| ------- | ------- | -------- |
+| user_id | integer | yes      |
+| title   | string  | yes      |
+| artist  | string  | yes      |
+| album   | string  | no       |
