@@ -16,6 +16,7 @@ function saveSong(song) {
         .where({ id })
         .first()
         .then(song => {
+          console.log(song);
           return song;
         });
     });

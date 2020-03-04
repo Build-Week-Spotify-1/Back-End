@@ -11,7 +11,7 @@ router.post("/faves", authenticate, (req, res) => {
   //   if (tokenId === song.user_id) {
   Favs.saveSong(song)
     .then(savedSong => {
-      res.status(200).json(savedSong);
+      return res.status(200).json(savedSong);
     })
     .catch(err => {
       console.log(err);
