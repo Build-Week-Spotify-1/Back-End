@@ -15,7 +15,7 @@ router.post("/faves", authenticate, (req, res) => {
     })
     .catch(err => {
       console.log(err);
-      res.status(500).json({ message: "Unable to save" });
+      res.status(500).json({ message: "Unable to save", error: err });
     });
   //   } else {
   //     return res.status(401).json({ message: "Unauthorized" });
