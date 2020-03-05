@@ -8,20 +8,20 @@ https://spotify-suggester.herokuapp.com/
 
 ## API Endpoints
 
-| Type | Endpoints                     | Description           |
-| ---- | ----------------------------- | --------------------- |
-| POST | /api/auth/register            | Register              |
-| POST | /api/auth/login               | Login                 |
-| GET  | /api/users                    | Get all users         |
-| GET  | /api/users/:id                | Get user by id        |
-| PUT  | /api/users/:id                | Update a user         |
-| POST | /api/songs/faves              | Post song to faves    |
-| GET  | /api/songs/:user_id/faves     | Get user's fave songs |
-| DEL  | /api/songs/:user_id/faves/:id | Delete a fave song    |
+| Method | Endpoints                     | Description           |
+| ------ | ----------------------------- | --------------------- |
+| POST   | /api/auth/register            | Register              |
+| POST   | /api/auth/login               | Login                 |
+| GET    | /api/users                    | Get all users         |
+| GET    | /api/users/:id                | Get user by id        |
+| PUT    | /api/users/:id                | Update a user         |
+| POST   | /api/songs/faves              | Post song to faves    |
+| GET    | /api/songs/:user_id/faves     | Get user's fave songs |
+| DEL    | /api/songs/:user_id/faves/:id | Delete a fave song    |
 
 ### User Schema
 
-| name       | type            | required |
+| Name       | Type            | Required |
 | ---------- | --------------- | -------- |
 | username   | string (unique) | yes      |
 | password   | string          | yes      |
@@ -30,7 +30,7 @@ https://spotify-suggester.herokuapp.com/
 
 ### Favorites Schema
 
-| name    | type    | required |
+| Name    | Type    | Required |
 | ------- | ------- | -------- |
 | user_id | integer | yes      |
 | title   | string  | yes      |
