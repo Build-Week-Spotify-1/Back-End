@@ -14,19 +14,19 @@ module.exports = {
     }
   },
 
-  staging: {
-    client: "postgresql",
-    connection: {
-      database: "my_db",
-      user: "username",
-      password: "password"
-    },
+  testing: {
+    client: "pg",
+    connection: "postgresql://localhost/testing",
     pool: {
       min: 2,
       max: 10
     },
     migrations: {
+      directory: "./migrations",
       tableName: "knex_migrations"
+    },
+    seeds: {
+      directory: "./seeds"
     }
   },
 

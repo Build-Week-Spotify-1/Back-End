@@ -29,6 +29,7 @@ function getSavedSongs(id) {
 }
 
 function removeSong(user_id, id) {
+  console.log(user_id, id);
   return db("favorites")
     .select()
     .where({ user_id, id })

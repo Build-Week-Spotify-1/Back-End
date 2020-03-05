@@ -32,6 +32,7 @@ router.get("/:user_id/faves", (req, res) => {
 router.delete("/:user_id/faves/:id", authenticate, (req, res) => {
   const id = req.params.user_id;
   const song = req.params.id;
+  console.log("id, song", id, song);
   Favs.removeSong(id, song)
     .then(deletedSong => {
       console.log(id);

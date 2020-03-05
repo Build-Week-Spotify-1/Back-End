@@ -2,6 +2,8 @@ const router = require("express").Router();
 const authenticate = require("../auth/auth-middleware");
 const Users = require("./users-model");
 
+const bcrypt = require("bcryptjs");
+
 //endpoint: /api/users
 router.get("/", authenticate, (req, res) => {
   Users.find()
@@ -34,15 +36,16 @@ router.get("/:id", authenticate, (req, res) => {
 
 //endpoint: /api/users
 router.put("/:id", authenticate, (req, res) => {
-  console.log(req.params);
-  const { id } = req.params;
-  const changes = req.body;
-
+  const { id } = req.params; // { id: # }
+  const changes = req.body; // object with key value pair of changes
   Users.findById(id)
     .then(user => {
       if (user) {
+        const hash = bcrypt.hashSync(changes.password, 8);
+        changes.password = hash;
+
         Users.update(changes, id).then(changes => {
-          res.json(changes);
+          res.status(200).json(changes); //returns # of changes
         });
       } else {
         res.status(404).json({ message: "Could not update" });
