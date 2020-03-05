@@ -7,21 +7,16 @@ const Users = require("../users/users-model");
 //endpoint: /api/auth/register
 router.post("/register", (req, res) => {
   let user = req.body;
+  const hash = bcrypt.hashSync(user.password, 8);
+  user.password = hash;
 
-  if (user.password && user.first_name && user.last_name) {
-    Users.add(user)
-      .then(newUser => {
-        const hash = bcrypt.hashSync(user.password, 8);
-        user.password = hash;
-        console.log(user.password);
-        res.status(201).json(newUser);
-      })
-      .catch(err => {
-        res.status(500).json({ message: "Unable to add user", error: err });
-      });
-  } else {
-    res.status(400).json({ message: "Please complete all fields." });
-  }
+  Users.add(user)
+    .then(newUser => {
+      res.status(201).json(newUser);
+    })
+    .catch(err => {
+      res.status(500).json({ message: "Unable to add user", error: err });
+    });
 });
 
 //endpoint: /api/auth/login
